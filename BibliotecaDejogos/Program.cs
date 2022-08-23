@@ -12,6 +12,8 @@ namespace BibliotecaDejogos
         static void Main(string[] args)
         {
             List<Jogo> listaDeJogos = new List<Jogo>();
+            Jogo jogo1 = new Jogo("Mario", 2022, "plat", 2);
+            listaDeJogos.Add(jogo1);
             Console.ForegroundColor = ConsoleColor.Green;
 
             while (true)
@@ -63,6 +65,18 @@ namespace BibliotecaDejogos
                         else
                         {
                             Console.WriteLine("Erro ao Editar.");
+                        }
+                        break;
+
+                    case "4":
+                        resultado = RemoverJogos(listaDeJogos);
+                        if (resultado == true)
+                        {
+                            Console.WriteLine("removido com sucesso.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Erro ao remover.");
                         }
 
                         break;
@@ -127,9 +141,18 @@ namespace BibliotecaDejogos
 
             return true;
         }
-            
-                 
-        
-            
+
+        public static bool RemoverJogos(List<Jogo> listaJogos)
+        {
+            Console.WriteLine();
+            foreach (Jogo jogo in listaJogos)
+            {
+                Console.WriteLine(listaJogos);
+            }
+
+            return true;
+        }
+
+
     }
 }

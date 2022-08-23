@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BibliotecaDejogos.Classes
 {
-    internal class Jogo
+        internal class Jogo
+            
     {
         //ATRIBUTOS
         String titulo;
@@ -58,3 +59,5 @@ namespace BibliotecaDejogos.Classes
 
     }
 }
+
+
