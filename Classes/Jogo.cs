@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace BibliotecaDejogos.Classes
 {
-        internal class Jogo
-            
+    internal class Jogo
     {
         //ATRIBUTOS
         String titulo;
@@ -55,9 +54,15 @@ namespace BibliotecaDejogos.Classes
             return this.ano;
         }
 
+        public void setAno (int ano)
+        {
+            if (ano > 1950)
+                this.ano = ano;
+        }
+
+
+
 
 
     }
 }
-
-

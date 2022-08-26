@@ -1,4 +1,4 @@
-﻿using BibliotecaDejogos.Classes; 
+﻿using BibliotecaDejogos.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +12,6 @@ namespace BibliotecaDejogos
         static void Main(string[] args)
         {
             List<Jogo> listaDeJogos = new List<Jogo>();
-            Jogo jogo1 = new Jogo("Mario", 2022, "plat", 2);
-            listaDeJogos.Add(jogo1);
             Console.ForegroundColor = ConsoleColor.Green;
 
             while (true)
@@ -60,27 +58,25 @@ namespace BibliotecaDejogos
                         resultado = EditarJogos(listaDeJogos);
                         if (resultado == true)
                         {
-                            Console.WriteLine("Editado com sucesso.");
+                            Console.WriteLine("Editado com sucesso!");
                         }
                         else
                         {
-                            Console.WriteLine("Erro ao Editar.");
+                            Console.WriteLine("Erro em editar.");
                         }
                         break;
 
                     case "4":
-                        resultado = RemoverJogos(listaDeJogos);
+                        resultado = DeletarJogos(listaDeJogos);
                         if (resultado == true)
                         {
-                            Console.WriteLine("removido com sucesso.");
+                            Console.WriteLine("Deletado com sucesso!");
                         }
                         else
                         {
-                            Console.WriteLine("Erro ao remover.");
+                            Console.WriteLine("Erro em deletar.");
                         }
-
                         break;
-
 
                     default:
                         Console.WriteLine("Opção Inválida!");
@@ -112,9 +108,11 @@ namespace BibliotecaDejogos
             return true;
         }
 
-        public static bool ListarJogos (List<Jogo> listaJogos)
+        public static bool ListarJogos (List <Jogo> listaJogos)
         {
-            foreach(Jogo jogo in listaJogos)
+            Console.WriteLine("=============== Lista de Jogos ================");
+
+            foreach (Jogo jogo in listaJogos)
             {
                 Console.Write("Titulo: ");
                 Console.WriteLine(jogo.getTitulo());
@@ -123,36 +121,73 @@ namespace BibliotecaDejogos
                 Console.WriteLine("==========");
                 Console.WriteLine("");
             }
+
+            Console.Beep();
 
             return true;
         }
 
         public static bool EditarJogos (List <Jogo> listaJogos)
         {
-            foreach(Jogo jogo in listaJogos)
-            {
-                Console.Write("Titulo: ");
-                Console.WriteLine(jogo.getTitulo());
-                Console.Write("Ano: ");
-                Console.WriteLine(jogo.getAno());
-                Console.WriteLine("==========");
-                Console.WriteLine("");
-            }
+            Console.WriteLine("=============== Editar Jogo ================");
 
-            return true;
-        }
+            Console.Write("Nome do jogo a ser editado: ");
+            String Editar = Console.ReadLine();
 
-        public static bool RemoverJogos(List<Jogo> listaJogos)
-        {
-            Console.WriteLine();
             foreach (Jogo jogo in listaJogos)
             {
-                Console.WriteLine(listaJogos);
+
+                if (Editar == jogo.getTitulo())
+                {
+                    Console.Write(" Novo Titulo: ");
+                    String TituloEdit = Console.ReadLine();
+                    jogo.setTitulo(TituloEdit);
+                    Console.Write(" Novo Ano: ");
+                    int AnoEdit = Convert.ToInt32(Console.ReadLine());
+                    jogo.setAno(AnoEdit);
+                    return true;
+                }
+
+                else
+                {
+                    Console.WriteLine("Jogo não encontrado");
+                    return false;
+                }
+
             }
+
+            Console.Beep();
 
             return true;
         }
 
+        public static bool DeletarJogos(List <Jogo> listaJogos)
+        {
+            Console.WriteLine("=============== Deletar Jogo ================");
 
+            Console.Write("Nome do jogo a ser excluido: ");
+            String Deletar = Console.ReadLine();
+
+            foreach (Jogo jogo in listaJogos)
+            {
+
+
+                if (Deletar == jogo.getTitulo())
+                {
+                    listaJogos.Remove(jogo);
+                    return true;
+                   
+
+                }
+
+            }
+
+            Console.Beep();
+
+            return true;
+
+
+
+        }
     }
 }
